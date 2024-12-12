@@ -1,56 +1,43 @@
-
-// SYSTEM_MODE(AUTOMATIC);
-SYSTEM_THREAD(ENABLED); //uncomment to use w/out wifi
+SYSTEM_THREAD(ENABLED);
 
 #include <Wire.h>
 #include "MAX30105.h"
-long lastBeat = 0; //Time at which the last beat occurred
-float beatsPerMinute;
+
 MAX30105 particleSensor;
+long lastBeat = 0;
+float beatsPerMinute;
+int led = D7;
 
-void handle(const char *event, const char *data){
-
-}
-int led = D7;  // The on-board LED
-
-void setup()
-{
+void setup() {
+    pinMode(led, OUTPUT);
     Serial.begin(9600);
-    Serial.println("Initializing...");
-
-    //subscriptions to Particle Webhooks
     Particle.subscribe("hook-response/bpm", handle, MY_DEVICES);
 
-    // Initialize sensor
-    if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) //Use default I2C port, 400kHz speed
-    {
-        Serial.println("MAX30105 was not found. Please check wiring/power. ");
+    if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) {
+        Serial.println("MAX30105 was not found. Please check wiring/power.");
         while (1);
     }
-    // Serial.println("Place your index finger on the sensor with steady pressure.");
 
-    particleSensor.setup(); //Configure sensor with default settings
-
+    particleSensor.setup(); // Default sensor configuration
 }
 
+void handle(const char *event, const char *data) {
+    Serial.println("Webhook response received.");
+}
 
 void loop() {
-    
-    digitalWrite(led, HIGH);   // Turn ON the LED
-  
+    digitalWrite(led, HIGH);
     long irValue = particleSensor.getIR();
-    delay(2000);
-    
-    if(irValue > 10000){
-        // long delta = millis() - lastBeat;
-        // lastBeat = millis();
-        // beatsPerMinute = 60 / (delta / 1000.0);        
-        beatsPerMinute = irValue/1831.0;
-        Particle.publish("activity", String(beatsPerMinute), PRIVATE);
+    delay(200); // Small delay for responsiveness
+
+    if (irValue > 10000) {
+        long currentTime = millis();
+        if ((currentTime - lastBeat) > 500) { // 500 ms debounce for realistic BPM
+            long delta = currentTime - lastBeat;
+            lastBeat = currentTime;
+            beatsPerMinute = 60 / (delta / 1000.0);
+            Particle.publish("activity", String(beatsPerMinute), PRIVATE);
+        }
     }
-   
+    digitalWrite(led, LOW); // Turn off LED
 }
-
-
-
-

@@ -62,5 +62,26 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.put('/update', async (req, res) => {
+    const { email, password, device } = req.body;
+
+    if (!email) return res.status(400).json({ message: 'Email is required.' });
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: 'User not found.' });
+
+        if (device) user.device = device;
+        if (password) user.password = await bcrypt.hash(password, 10);
+
+        await user.save();
+        res.status(200).json({ message: 'User information updated successfully.' });
+    } catch (err) {
+        console.error('Error updating user:', err.message);
+        res.status(500).json({ message: 'Error updating user information.' });
+    }
+});
+
+
 
 module.exports = router;

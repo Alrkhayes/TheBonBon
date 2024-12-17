@@ -1,0 +1,50 @@
+.user-info {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.user-info h2 {
+    color: #006884;
+    margin-bottom: 20px;
+}
+
+.user-info form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-info input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.user-info button {
+    background-color: #006884;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-info button:hover {
+    background-color: #004f66;
+}
+
+#updateMessage {
+    margin-top: 10px;
+    font-weight: bold;
+}

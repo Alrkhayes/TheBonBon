@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="login.html">Login</a>
+        <a href="student.html">View Database</a> <!-- Link to student.html -->
+    </div>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Create Account</h1>
+            <form id="create-account-form">
+                <input type="email" id="email" placeholder="Username" class="input-field" required>
+                <input type="password" id="password" placeholder="Password" class="input-field" required>
+                <input type="text" id="device" placeholder="Device" class="input-field" required>
+                <p id="password-strength" class="password-strength"></p>
+                <button type="submit" class="btn login-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script src="/javascripts/createaccount.js"></script>
+</body>
+
+</html>

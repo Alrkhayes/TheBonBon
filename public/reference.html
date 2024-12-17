@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project References</title>
+    <link rel="stylesheet" href="/stylesheets/reference.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>References</h1>
+        <p>List of Third-Party APIs, Libraries, and External Code</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Third-Party Libraries</h2>
+        <ul class="reference-list">
+            <li>
+                <strong>Chart.js</strong> - For creating interactive and dynamic charts.
+                <br>
+                <a href="https://www.chartjs.org/" target="_blank">https://www.chartjs.org/</a>
+            </li>
+            <li>
+                <strong>Bcrypt.js</strong> - Used for password hashing and security.
+                <br>
+                <a href="https://www.npmjs.com/package/bcrypt" target="_blank">https://www.npmjs.com/package/bcrypt</a>
+            </li>
+            <li>
+                <strong>Express.js</strong> - Lightweight web framework for Node.js.
+                <br>
+                <a href="https://expressjs.com/" target="_blank">https://expressjs.com/</a>
+            </li>
+            <li>
+                <strong>MongoDB & Mongoose</strong> - Database and ODM for storing user data.
+                <br>
+                <a href="https://mongoosejs.com/" target="_blank">https://mongoosejs.com/</a>
+            </li>
+            <li>
+                <strong>Body-parser</strong> - Middleware to parse incoming request bodies.
+                <br>
+                <a href="https://www.npmjs.com/package/body-parser"
+                    target="_blank">https://www.npmjs.com/package/body-parser</a>
+            </li>
+            <li>
+                <strong>MAX30105 Library</strong> - Library for interfacing with the MAX30105 sensor to measure heart
+                rate and SpO2.
+                <br>
+                <a href="https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library"
+                    target="_blank">https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library</a>
+            </li>
+        </ul>
+
+        <h2>APIs</h2>
+        <ul class="reference-list">
+            <li>
+                <strong>Particle Cloud API</strong> - Used for communicating with IoT devices and sending heart rate
+                data.
+                <br>
+                <a href="https://docs.particle.io/" target="_blank">https://docs.particle.io/</a>
+            </li>
+            <li>
+                <strong>Custom Backend API</strong> - RESTful API for user login, registration, and data management.
+                <br>
+                <a href="/users" target="_blank">API Endpoints</a>
+            </li>
+        </ul>
+
+        <h2>My Codes</h2>
+        <ul class="reference-list">
+            <li>
+                <strong>Creating User Account</strong> - Code for user registration with password hashing.
+                <br>
+                Backend: <em>routes/users.js</em> | MongoDB: <em>models/user.js</em>
+            </li>
+            <li>
+                <strong>MongoDB Integration</strong> - Dealing with MongoDB for storing and updating user data.
+                <br>
+                - User Schema: <em>models/user.js</em>
+                - Update Route: <em>routes/users.js</em>
+            </li>
+            <li>
+                <strong>Login Functionality</strong> - Handles user authentication and stores userId locally.
+                <br>
+                Location: <em>public/javascripts/login.js</em>
+            </li>
+            <li>
+                <strong>Account Update</strong> - Allows users to update their password and device.
+                <br>
+                Frontend: <em>public/javascripts/myaccount.js</em> | Backend: <em>routes/users.js</em>
+            </li>
+            <li>
+                <strong>App.js Configuration</strong> - Main server setup, middleware, and routes.
+                <br>
+                - Middleware: Express, Body-parser, CORS.
+                - Routes: <em>/users, /data, /login</em>.
+                <br>
+                Location: <em>app.js</em>
+            </li>
+        </ul>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Project. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

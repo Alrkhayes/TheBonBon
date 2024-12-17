@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+    </div>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <p>Have an account?</p>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" class="input-field" required>
+                <input type="password" id="password" placeholder="Password" class="input-field" required>
+                
+		<!-- Show Password Checkbox -->
+                <div class="show-password">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show Password</label>
+                </div>
+
+		<button type="submit" class="btn login-btn">Login</button>
+                <button type="button" class="btn create-account-btn"
+                    onclick="location.href='createaccount.html';">Create an Account</button>
+            </form>
+        </div>
+    </div>
+    <script src="/javascripts/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="/stylesheets/myaccount.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="/login.html">Logout</a>
+        <select id="chart-selector">
+            <option value="avgBPM">Heart Rate (BPM)</option>
+            <option value="spO2">Blood Oxygen (SpO2)</option>
+            <option value="weeklySummary">Weekly Summary</option>
+        </select>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>My Account</h1>
+    </header>
+
+	<!-- Today's Heart Rate Summary -->
+	<section id="todaysSummary" class="summary-container">
+    <h2>Today's Heart Rate Summary</h2>
+    <div class="summary">
+        <p><strong>Max Heart Rate:</strong> <span id="maxHeartRate">--</span> BPM</p>
+        <p><strong>Min Heart Rate:</strong> <span id="minHeartRate">--</span> BPM</p>
+    </div>
+	</section>
+
+
+
+
+
+    <!-- Main Content -->
+    <main>
+        <section class="graph-container">
+            <div class="graph" id="avgBPMGraph">
+                <h2>Heart Rate (BPM) Over Time</h2>
+                <canvas id="avgBPMChart"></canvas>
+            </div>
+            <div class="graph" id="spO2Graph" style="display: none;">
+                <h2>Blood Oxygen (SpO2) Over Time</h2>
+                <canvas id="spO2Chart"></canvas>
+            </div>
+            <div class="graph" id="weeklySummaryGraph" style="display: none;">
+                <h2>Weekly Summary</h2>
+                <canvas id="weeklySummaryChart"></canvas>
+            </div>
+        </section>
+
+	<!-- User Information Update Section -->
+        <section class="user-info">
+            <h2>Update Your Information</h2>
+            <form id="updateForm">
+                <label for="device">Device:</label>
+                <input type="text" id="device" name="device" placeholder="Enter your device">
+
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter new password">
+
+                <button type="submit">Update</button>
+            </form>
+            <p id="updateMessage" style="color: green;"></p>
+        </section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Heart Rate Tracker</p>
+    </footer>
+
+    
+	<script src="/javascripts/myaccount.js"></script>
+</body>
+
+</html>

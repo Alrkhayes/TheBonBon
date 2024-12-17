@@ -10,13 +10,23 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         const response = await fetch('/users/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }), // Use `email`
+            body: JSON.stringify({ email, password }),
         });
 
+        const data = await response.json(); // Parse response JSON
+
         if (response.ok) {
-            window.location.href = 'myaccount.html'; // Redirect on success
+            // Store userId and email in localStorage
+            localStorage.setItem('userId', data.userId);
+            localStorage.setItem('email', data.email);
+
+            console.log('Login successful. User ID:', data.userId);
+
+            // Redirect to myaccount.html
+            window.location.href = 'myaccount.html';
         } else {
-            alert('Invalid Username/Password. Please try again.');
+            // Display an error message from the server
+            alert(data.message || 'Invalid Username/Password. Please try again.');
         }
     } catch (error) {
         console.error('Error during login:', error);

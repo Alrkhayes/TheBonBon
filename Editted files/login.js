@@ -1,32 +1,25 @@
-async function loginUser(email, password) {
+document.getElementById('login-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Get form values
+    const email = document.getElementById('username').value; // Change `username` to `email`
+    const password = document.getElementById('password').value;
+
     try {
+        // Send login request
         const response = await fetch('/users/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, password }), // Use `email`
         });
 
-        const data = await response.json();
         if (response.ok) {
-            // Store userId and email in localStorage
-            localStorage.setItem('userId', data.userId);
-            localStorage.setItem('email', data.email);
-
-            console.log('Login successful:', data);
-            window.location.href = '/myaccount.html'; // Redirect to account page
+            window.location.href = 'myaccount.html'; // Redirect on success
         } else {
-            alert(data.message);
+            alert('Invalid Username/Password. Please try again.');
         }
-    } catch (err) {
-        console.error('Login error:', err);
-        alert('Server error. Please try again.');
+    } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred. Please try again later.');
     }
-}
-
-// Example usage
-document.getElementById('loginForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    loginUser(email, password);
 });

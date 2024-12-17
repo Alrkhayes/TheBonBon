@@ -1,6 +1,18 @@
 document.getElementById('login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    // Show/Hide Password Functionality
+        const passwordInput = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('show-password');
+
+        showPasswordCheckbox.addEventListener('change', () => {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text'; // Show password
+            } else {
+                passwordInput.type = 'password'; // Hide password
+            }
+        });
+
     // Get form values
     const email = document.getElementById('username').value; // Change `username` to `email`
     const password = document.getElementById('password').value;
